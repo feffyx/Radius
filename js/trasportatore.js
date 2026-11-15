@@ -115,8 +115,8 @@ function completeMission(missionId) {
 
 function optimizeBackhaul() {
   showToast(
-    'Giro Botte Ottimizzato!',
-    'Pianificato carico di ritorno: la botte scarica al Campo Mais #04 e riparte direttamente dall\'Impianto Biogas senza tornare vuota. Risparmiati 14 km e 18L di gasolio.',
+    'Giro Botte Ottimizzato (Backhaul Triangolare)!',
+    'Pianificato carico di ritorno: la botte dopo lo scarico a Campo Mais #04 (Cancello ed Arnone) aggancia il carico all\'Impianto Biogas Volturno (1,8 km) per Tenuta Mazzoni, azzerando il ritorno a vuoto. Risparmiati 14,2 km di strada, 18,5 L di gasolio agricolo e 45 minuti di cantiere.',
     'success'
   );
 }

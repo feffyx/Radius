@@ -40,8 +40,21 @@ function updateFarmerUi() {
 }
 
 function calculateOfferSavingPerM3(offer) {
-  const ureaRatio = state.ureaPrice / 700;
-  return Math.max(0.3, offer.baseSavingPerM3 * ureaRatio);
+  // Prezzo reale azoto chimico da Urea 46% (€/kg N)
+  const nitrogenPricePerKg = (state.ureaPrice / 1000) / AGRONOMIC_CONSTANTS.ureaN_Percentage;
+  
+  // Apporto di N per m3 del carico
+  const nPerM3 = offer.nitrogenKg / offer.volumeM3;
+  // Valore concime organico (azoto chimico sostituito + fosforo P2O5 e potassio K2O organico)
+  const isDigestate = offer.type.includes('Digestato');
+  const pkValue = isDigestate ? 1.20 : 0.40;
+  const fertilizerValuePerM3 = (nPerM3 * nitrogenPricePerKg) + pkValue;
+
+  // Costo logistico cantiere botte contoterzista
+  const transportCostPerM3 = AGRONOMIC_CONSTANTS.fixedOperationCostPerM3 + (AGRONOMIC_CONSTANTS.transportCostPerKmPerM3 * offer.distanceKm);
+
+  // Risparmio netto rispetto all'acquisto di concimi chimici di sintesi
+  return Math.max(0.35, fertilizerValuePerM3 - transportCostPerM3 + (state.subsidyActive ? 1.0 : 0));
 }
 
 function renderFarmerOffers() {
@@ -81,7 +94,7 @@ function renderFarmerOffers() {
           </div>
 
           <div class="flex items-center gap-2">
-            <span class="badge-npk">🌾 ${offer.ureaEqTons}t Urea Eq.</span>
+            <span class="badge-npk">${offer.ureaEqTons}t Urea Eq.</span>
             <span class="text-xs font-bold text-slate-600">Distanza: ${offer.distanceKm} km</span>
           </div>
 

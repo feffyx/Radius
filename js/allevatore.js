@@ -31,7 +31,7 @@ function updateAllevatoreKpi() {
   }
 
   if (daysEl) {
-    const dailyProduction = 26; // m3/giorno generati da 420 bufale
+    const dailyProduction = 24.4; // m3/giorno generati da 420 bufale in lattazione (58L/capo/giorno)
     const remainingVol = state.tankCapacityM3 - state.tankVolumeM3;
     const daysLeft = Math.max(1, Math.floor(remainingVol / dailyProduction));
     daysEl.textContent = `${daysLeft} giorni`;
@@ -44,10 +44,18 @@ function updateAllevatoreKpi() {
 }
 
 function calculateLoadMargin(load) {
-  // Calcolo margine economico rispetto a 700€/t urea
-  const ureaDiffFactor = (state.ureaPrice - 700) / 100 * 0.18;
+  // Prezzo dell'azoto puro (€/kg N) in base al valore dell'urea chimica sul mercato
+  const nitrogenPricePerKg = (state.ureaPrice / 1000) / AGRONOMIC_CONSTANTS.ureaN_Percentage;
+  
+  // Titolo azoto: 2.8 kg N/m3 per liquame grezzo, 4.5 kg N/m3 per digestato
+  const nContent = load.type.includes('Digestato') || load.type.includes('trattare') ? 4.5 : 2.8;
+  const fertilizerValuePerM3 = nContent * nitrogenPricePerKg;
+
+  // Costo effettivo cantiere botte (tariffa contoterzisti Caserta: 2.10 fisso carico/scarico + 0.38/km)
+  const transportCostPerM3 = AGRONOMIC_CONSTANTS.fixedOperationCostPerM3 + (AGRONOMIC_CONSTANTS.transportCostPerKmPerM3 * load.distanceKm);
   const subsidyVal = state.subsidyActive ? 2.0 : 0;
-  return load.baseDiffAt700 + ureaDiffFactor + subsidyVal;
+
+  return (fertilizerValuePerM3 - transportCostPerM3 + subsidyVal);
 }
 
 function renderAllevatoreLoads() {

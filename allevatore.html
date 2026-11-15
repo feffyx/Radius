@@ -85,27 +85,19 @@
         </div>
       </a>
 
-      <!-- Selettore Ruolo Desktop -->
-      <nav aria-label="Scegli chi sei" class="hidden lg:flex items-center bg-terra-100 p-1.5 rounded-2xl border border-terra-200">
-        <a href="allevatore.html" id="tab-allevatore" class="role-tab px-4 py-2.5 rounded-xl text-sm font-bold transition bg-white text-forest-800 shadow-xs">
-          1. Allevatore (Stalla)
-        </a>
-        <a href="agricoltore.html" id="tab-agricoltore" class="role-tab px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:text-slate-900 transition">
-          2. Agricoltore (Campi)
-        </a>
-        <a href="trasportatore.html" id="tab-trasportatore" class="role-tab px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:text-slate-900 transition">
-          3. Contoterzista (Botte)
-        </a>
-        <a href="mappa.html" id="tab-mappa" class="role-tab px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:text-slate-900 transition">
-          4. Mappa & Zone
-        </a>
-      </nav>
+      <div class="flex items-center gap-2.5">
+        <!-- Pulsante Parametri Mercato -->
+        <button onclick="toggleSimulatorDrawer()" id="sim-toggle-btn" class="min-h-[42px] px-3.5 py-2 rounded-xl border-2 border-slate-200 bg-white hover:border-forest-700 text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-2 transition">
+          <svg class="w-4 h-4 text-forest-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+          <span>Prezzo Urea: <strong class="num-tabular text-forest-800 dyn-urea-p">700</strong> €/t</span>
+        </button>
 
-      <!-- Pulsante Parametri Mercato -->
-      <button onclick="toggleSimulatorDrawer()" id="sim-toggle-btn" class="min-h-[44px] px-3.5 py-2 rounded-xl border-2 border-slate-200 bg-white hover:border-forest-700 text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-2 transition">
-        <svg class="w-4 h-4 text-forest-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
-        <span>Prezzo Urea: <strong class="num-tabular text-forest-800 dyn-urea-p">700</strong> €/t</span>
-      </button>
+        <!-- Esci / Cambia Account -->
+        <a href="onboarding.html" onclick="logoutSession()" title="Disconnettiti e cambia attività" class="min-h-[42px] px-3.5 py-2 rounded-xl border-2 border-slate-200 hover:border-red-500 hover:text-red-700 bg-white text-xs sm:text-sm font-bold text-slate-700 flex items-center gap-1.5 transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+          <span>Esci</span>
+        </a>
+      </div>
 
     </div>
 
@@ -197,7 +189,7 @@
               Si riempie tra <span id="kpi-days-full" class="text-amber-700 underline">6 giorni</span>
             </p>
             <p class="text-sm text-slate-600">
-              <span class="meteo-badge">☀️ Meteo Favorevole</span> da Mercoledì a Venerdì (non piove).
+              <span class="meteo-badge"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block mr-1"></span>Meteo Favorevole</span> da Mercoledì a Venerdì (non piove).
             </p>
             <p class="text-xs text-slate-500 pt-1 border-t border-slate-100">
               Fino a <strong class="num-tabular text-slate-800"><span class="dyn-raw-r">3,5</span> km</strong> conviene portarlo nei campi; oltre conviene il Biogas.
@@ -223,38 +215,18 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="mt-auto border-t border-slate-200 bg-white pb-20 lg:pb-0">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 lg:py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+  <footer class="mt-auto border-t border-slate-200 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
       <div class="flex items-center gap-2">
         <span class="font-display font-extrabold text-forest-800 text-sm">Radius</span>
         <span>•</span>
-        <span>Gestione e Logistica Intelligente Reflui</span>
+        <span>Gestione e Logistica Intelligente Reflui · Caserta</span>
       </div>
       <div class="text-center sm:text-right">
-        <span>© 2026 Tutti i diritti riservati a <strong>Studio26</strong> • Progetto per <strong>BICH HACK 2026</strong></span>
+        <span>© 2026 Tutti i diritti riservati a <strong>Studio26</strong> • Progetto per <strong>BIG HACK 2026</strong></span>
       </div>
     </div>
   </footer>
-
-  <!-- BARRA NAVIGAZIONE MOBILE -->
-  <nav aria-label="Menu rapido mobile" class="lg:hidden fixed bottom-0 inset-x-0 bg-white border-t border-slate-200 z-40 px-2 py-1.5 grid grid-cols-4 gap-1 shadow-lg">
-    <a href="allevatore.html" id="mob-tab-allevatore" class="mob-tab flex flex-col items-center justify-center py-2 rounded-xl bg-forest-50 text-forest-800 font-extrabold text-[11px]">
-      <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-      <span>Stalla</span>
-    </a>
-    <a href="agricoltore.html" id="mob-tab-agricoltore" class="mob-tab flex flex-col items-center justify-center py-2 rounded-xl text-slate-500 font-semibold text-[11px]">
-      <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-      <span>Campi</span>
-    </a>
-    <a href="trasportatore.html" id="mob-tab-trasportatore" class="mob-tab flex flex-col items-center justify-center py-2 rounded-xl text-slate-500 font-semibold text-[11px]">
-      <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
-      <span>Botte</span>
-    </a>
-    <a href="mappa.html" id="mob-tab-mappa" class="mob-tab flex flex-col items-center justify-center py-2 rounded-xl text-slate-500 font-semibold text-[11px]">
-      <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-      <span>Mappa</span>
-    </a>
-  </nav>
 
   <!-- Script: dati e logica specifica allevatore -->
   <script src="js/data.js"></script>
