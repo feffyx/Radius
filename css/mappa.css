@@ -1,0 +1,62 @@
+/* ===========================
+   NitroBufalo – Stili Mappa Interattiva
+   =========================== */
+
+.map-node {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.map-node:hover {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+/* Cerchi di Raggio */
+.radius-raw {
+  fill: #F59E0B;
+  fill-opacity: 0.15;
+  stroke: #D97706;
+  stroke-width: 2;
+  stroke-dasharray: 6 3;
+  transition: r 0.5s ease-out;
+}
+
+.radius-digestate {
+  fill: #10B981;
+  fill-opacity: 0.12;
+  stroke: #059669;
+  stroke-width: 2.5;
+  transition: r 0.5s ease-out;
+}
+
+/* Animazione Pulsazione Stalla Attiva */
+@keyframes farmPulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.25); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+.farm-pulse-ring {
+  transform-origin: center;
+  animation: farmPulse 2.5s infinite ease-in-out;
+}
+
+/* Linee tratte con animazione di flusso */
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.map-flow-route {
+  stroke-dasharray: 6 4;
+  animation: dashFlow 1.5s linear infinite;
+}
+
+/* Card Ispettore Mappa */
+.inspector-stat-box {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 1rem;
+  padding: 0.75rem 1rem;
+}
