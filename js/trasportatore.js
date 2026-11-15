@@ -1,5 +1,5 @@
 /* ===========================
-   NitroBufalo – Logica Trasportatore
+   Radius – Logica Trasportatore
    =========================== */
 
 function initTrasportatore() {

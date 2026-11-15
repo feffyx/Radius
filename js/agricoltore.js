@@ -1,5 +1,5 @@
 /* ===========================
-   NitroBufalo – Logica Agricoltore
+   Radius – Logica Agricoltore
    =========================== */
 
 function initAgricoltore() {

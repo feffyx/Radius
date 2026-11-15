@@ -1,5 +1,5 @@
 /* ===========================
-   NitroBufalo – Dati e Stato Condiviso
+   Radius – Dati e Stato Condiviso
    =========================== */
 
 const state = {
@@ -170,7 +170,7 @@ function getCalculatedRadii() {
 /* ---------- Persistenza stato tra pagine (localStorage) ---------- */
 function loadSharedState() {
   try {
-    const saved = localStorage.getItem('nitrobufalo-shared');
+    const saved = localStorage.getItem('radius-shared') || localStorage.getItem('nitrobufalo-shared');
     if (saved) {
       const p = JSON.parse(saved);
       if (p.ureaPrice !== undefined) state.ureaPrice = p.ureaPrice;
@@ -190,7 +190,7 @@ function loadSharedState() {
 
 function saveSharedState() {
   try {
-    localStorage.setItem('nitrobufalo-shared', JSON.stringify({
+    localStorage.setItem('radius-shared', JSON.stringify({
       ureaPrice: state.ureaPrice,
       subsidyActive: state.subsidyActive,
       seasonMode: state.seasonMode,
@@ -438,7 +438,7 @@ function openDocModal(docType, payload) {
         </div>
       </div>
       <div class="p-2.5 bg-slate-50 rounded-xl text-center text-xs text-slate-500 font-mono">
-        Tracciamento GPS Attivo · Certificato Digitale #NITRO-${Math.floor(100000 + Math.random() * 900000)}
+        Tracciamento GPS Attivo · Certificato Digitale #RADIUS-${Math.floor(100000 + Math.random() * 900000)}
       </div>
     `;
   }

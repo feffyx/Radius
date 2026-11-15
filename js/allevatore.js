@@ -1,5 +1,5 @@
 /* ===========================
-   NitroBufalo – Logica Allevatore
+   Radius – Logica Allevatore
    =========================== */
 
 function initAllevatore() {

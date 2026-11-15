@@ -1,5 +1,5 @@
 /* ===========================
-   NitroBufalo – Logica Mappa Interattiva
+   Radius – Logica Mappa Interattiva
    =========================== */
 
 const MAP_PIXELS_PER_KM = 23; // Scala geografica calibrata su Piana del Volturno
